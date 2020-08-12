@@ -30,10 +30,15 @@ pipeline {
         }
 	
       stage("Deploy App") {
-        kubernetesDeploy(
-		configs: 'hellowhale.yml',
-		kubeconfigId: 'mykubeconfig',
-		enableConfigSubstitution: true)
+	      steps{
+		      script{
+       				 kubernetesDeploy(
+						configs: 'hellowhale.yml',
+						kubeconfigId: 'mykubeconfig',
+						enableConfigSubstitution: true)
+	  }
+       }
+	      
     }
 
    
