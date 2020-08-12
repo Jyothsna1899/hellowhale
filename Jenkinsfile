@@ -29,12 +29,11 @@ pipeline {
             }
         }
 	
-      stage('Deploy App') {
+      stage("Deploy App") {
         kubernetesDeploy(
 		configs: 'hellowhale.yml',
 		kubeconfigId: 'mykubeconfig',
-		enableConfigSubstitution: true
-			)
+		enableConfigSubstitution: true)
     }
 
    
