@@ -29,17 +29,20 @@ pipeline {
             }
         }
 	
-    stage("Deploy To Kuberates Cluster"){
-        withCredentials([file(credentialsId: 'demo-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-         sh "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
-         sh "gcloud config set project mssdevops-284216"
-         sh "gcloud config set compute/zone us-central1-c"
-         sh "gcloud config set compute/region us-central1"
-         sh "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project mssdevops-284216"
-         sh "sed -i -e 's,image_to_be_deployed,'milan2312/hellowhale:${BUILD_ID}',g' hellowhale.yml"
-         sh "kubectl apply -f hellowhale.yml"
+   	 stage("Deploy To Kuberates Cluster"){
+		 steps{
+      			  withCredentials([file(credentialsId: 'demo-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+         			sh "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
+         			sh "gcloud config set project mssdevops-284216"
+				 sh "gcloud config set compute/zone us-central1-c"
+				 sh "gcloud config set compute/region us-central1"
+				 sh "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project mssdevops-284216"
+				 sh "sed -i -e 's,image_to_be_deployed,'milan2312/hellowhale:${BUILD_ID}',g' hellowhale.yml"
+				 sh "kubectl apply -f hellowhale.yml"
+			  }
+			 
         }
-      }
+	 }
 
    
   }
