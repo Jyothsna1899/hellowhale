@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: hello-whale-container
-        image: vamsijakkula/hellowhale:latest
+        image: milan2312/hellowhale:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -32,7 +32,7 @@ spec:
   selector:
     app: hello-whale-app
     version: blue
-  type: NodePort
+  type: LoadBalancer
   ports:
   - nodePort: 31113
     port: 80
