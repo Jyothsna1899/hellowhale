@@ -1,18 +1,21 @@
 # hellowhale
 Simple Docker Demo App/.///
 
-
+/** 
 on Azure this is way we can connect K8 
-  /** stage("Deploy To Kuberates Cluster"){
+   stage("Deploy To Kuberates Cluster"){
        kubernetesDeploy(
          configs: 'springBootMongo.yml', 
          kubeconfigId: 'mykubeconfig',
          enableConfigSubstitution: true
         )
-     }**/
+     }
+ **/
+     
     Or second way is
     ////////////////////////////
-  /**  
+    
+    /**  
      
     stage('Deploy App') {
       steps {
@@ -32,10 +35,11 @@ on Azure this is way we can connect K8
 
 } **/
 
+
+/**
+
 /////// On GCP k8 cluster following steps need to do to connect Jenkins and K8 /////
 
-
-/** 
 stage("Deploy To Kuberates Cluster"){
 		 steps{
       			  withCredentials([file(credentialsId: 'demo-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
