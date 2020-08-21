@@ -22,7 +22,7 @@ pipeline {
 	   	  
           /**frontend **/			
 	  sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:latest',g' hellowhale.yaml"
-    kubectl apply -f hellowhale.yml -n sree
+          kubectl apply -f hellowhale.yml 
     }
    }
   }
